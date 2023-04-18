@@ -82,7 +82,7 @@ bool MyString::empty() const
 
 std::size_t MyString::size() const
 {
-    return length;
+    return strlen(string);
 }
 
 std::size_t MyString::capacity() const

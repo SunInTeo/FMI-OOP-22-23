@@ -2,20 +2,26 @@
 
 void MyString::copy(const MyString &other)
 {
-    char *buffer = new char[strlen(other.string) + 1];
-    strcpy(buffer, other.string);
-    string = buffer;
     length = other.length;
+    bufferSize = other.bufferSize;
+    string = new char[bufferSize];
+    strcpy(string, other.string);
 }
 
 MyString::MyString()
-    : length(0) {}
+{
+    string = new char[1];
+    string[0] = '\0';
+    length = 0;
+    bufferSize = 1;
+}
 
 MyString::MyString(const char *string)
 {
     length = strlen(string);
-    this->string = new char[length + 1];
-    strcpy(this->string, string);
+    bufferSize = length + 1; 
+    this->string = new char[bufferSize];
+    strcpy(this->string, string); 
 }
 
 MyString::MyString(const MyString &other)
@@ -82,12 +88,12 @@ bool MyString::empty() const
 
 std::size_t MyString::size() const
 {
-    return strlen(string);
+    return length;
 }
 
 std::size_t MyString::capacity() const
 {
-    return length;
+    return bufferSize;
 }
 
 void MyString::clear()
@@ -97,6 +103,7 @@ void MyString::clear()
         delete[] string;
     }
     length = 0;
+    bufferSize = 0;
 }
 
 void MyString::pop_back()
@@ -112,22 +119,30 @@ void MyString::pop_back()
 
 void MyString::push_back(char ch)
 {
-    char *buffer = new char[length + 2];
-    strcpy(buffer, string);
-    buffer[length] = ch;
-    buffer[length + 1] = '\0';
-    delete[] string;
-    string = buffer;
+    if (length + 1 >= bufferSize)
+    {
+        bufferSize *= 2;
+        char *buffer = new char[bufferSize];
+        strcpy(buffer, string);
+        delete[] string;
+        string = buffer;
+    }
+    string[length] = ch;
     length++;
+    string[length] = '\0';
 }
 
 MyString &MyString::operator+=(const MyString &other)
 {
-    char *buffer = new char[length + other.length + 1];
-    strcpy(buffer, string);
-    strcat(buffer, other.string);
-    delete[] string;
-    string = buffer;
+    if (length + other.length + 1 >= bufferSize)
+    {
+        bufferSize = length + other.length + 1;
+        char *buffer = new char[bufferSize];
+        strcpy(buffer, string);
+        delete[] string;
+        string = buffer;
+    }
+    strcat(string, other.string);
     length += other.length;
 
     return *this;
@@ -137,7 +152,6 @@ MyString MyString::operator+(const MyString &other) const
 {
     MyString result(*this);
     result += other;
-
     return result;
 }
 

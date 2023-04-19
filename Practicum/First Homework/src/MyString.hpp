@@ -4,11 +4,14 @@
 #include <cstring>
 #include <cassert>
 
+using std::size_t;
+
 class MyString
 {
 private:
     char *string = nullptr;
-    std::size_t length;
+    size_t length;
+    size_t bufferSize;
 
     void copy(const MyString &other);
 

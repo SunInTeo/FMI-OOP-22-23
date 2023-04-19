@@ -1,20 +1,22 @@
 #include "MyString.hpp"
 
-/*Реализирайте клас Book (книга), който съдържа следните полета:
-Нека той има следния интерфейс:
-Да НЯМА конструктор по подразбиране
-Да има конструктор с параметри - Book(const char* ISBN, const char* title, const char* author, std::size_t space)
-Да спазва Rule of 0/3*/
 class Book
 {
 private:
-    MyString ISBN;
-    MyString title;
-    MyString author;
-    std::size_t space;
+    MyString m_ISBN;
+    MyString m_title;
+    MyString m_author;
+    std::size_t m_space;
+
+    void copy(const Book &other);
 
 public:
-    Book(const char *ISBN, const char *title, const char *author, std::size_t space);
+    Book() = delete;
+    Book(const char *ISBN, const char *title, const char *author, std::size_t space); // maybe not needed
+    Book(const MyString &ISBN, const MyString &title, const MyString &author, std::size_t space); 
+    Book(const Book &other);
+    Book &operator=(const Book &other);
+    ~Book() = default;
 
     const char *ISBN() const; // - връща ISBN - a като C - style символен низ 
     const char *title() const; // - връща заглавието като C - style символен низ 

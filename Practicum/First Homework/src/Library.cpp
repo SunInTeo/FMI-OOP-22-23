@@ -13,7 +13,7 @@ Library::~Library()
     clear();
 }
 
-bool Library::addNewBook(Book &book)
+void Library::addNewBook(Book &book)
 {
     if (book.space() + m_sizeTaken > m_capacity)
         throw std::invalid_argument("Not enough space for this book");

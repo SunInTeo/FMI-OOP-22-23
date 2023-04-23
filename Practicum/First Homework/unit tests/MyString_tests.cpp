@@ -94,7 +94,7 @@ TEST_CASE("pop_back() and push_back() functions")
         size_t oldlen = str.size();
         str.pop_back();
         REQUIRE(str.size() == oldlen - 1);
-        REQUIRE(str.back() == 'd');
+        REQUIRE(str.back() == 'l');
         REQUIRE(str == "Hello worl");
     }
 }
@@ -110,7 +110,7 @@ TEST_CASE("operator+=")
 
     SECTION("operator+= (const char *other)")
     {
-        MyString str1("Hello world");
+        MyString str1("Hello world!");
         MyString str2(" My name is George!");
         str1 += str2;
         REQUIRE(str1 == "Hello world! My name is George!");
@@ -129,7 +129,7 @@ TEST_CASE("operator+")
 
     SECTION("operator+ (const char *other)")
     {
-        MyString str1("Hello world");
+        MyString str1("Hello world!");
         MyString str2(" My name is George!");
         MyString str3 = str1 + str2;
         REQUIRE(str3 == "Hello world! My name is George!");

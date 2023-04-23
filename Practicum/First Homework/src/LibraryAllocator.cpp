@@ -61,9 +61,13 @@ void LibraryAllocator::eraseBook(const MyString &ISBN)
 
 void LibraryAllocator::cleanAll()
 {
-    cleanLibrary();
+    for (int i = 0; i < booksCount; i++)
+    {
+        delete m_books[i];
+    }
     delete[] m_books;
-    delete lib;
+    booksCount = 0;
+    m_books = new Book *[booksCount];
 }
 
 void LibraryAllocator::cleanLibrary()

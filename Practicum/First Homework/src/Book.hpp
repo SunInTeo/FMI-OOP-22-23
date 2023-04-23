@@ -23,4 +23,6 @@ public:
     const char *title() const;  // - връща заглавието като C - style символен низ
     const char *author() const; // - връща автора като C - style символен низ
     std::size_t space() const;  // - връща броя места, които заема на един рафт
+
+    void print();               // - извежда информация за книгата
 };

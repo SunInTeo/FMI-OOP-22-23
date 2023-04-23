@@ -94,3 +94,11 @@ const Book *Library::find(const char *ISBN) const
     }
     return nullptr;
 }
+
+void Library::print()
+{
+    for (size_t i = 0; i < m_numOfBooks; ++i)
+    {
+        m_books[i]->print();
+    }
+}

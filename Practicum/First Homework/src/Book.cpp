@@ -52,3 +52,10 @@ std::size_t Book::space() const
 {
     return this->m_space;
 }
+
+void Book::print()
+{
+    std::cout << "ISBN: " << this->m_ISBN << std::endl;
+    std::cout << "Title: " << this->m_title << std::endl;
+    std::cout << "Author: " << this->m_author << std::endl;
+}

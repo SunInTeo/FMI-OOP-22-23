@@ -35,7 +35,7 @@ void Library::addNewBook(Book &book)
 
 void Library::removeBook(const char *ISBN)
 {
-    for (size_t i = 0; i < m_numOfBooks; ++i)
+    /*for (size_t i = 0; i < m_numOfBooks; ++i)
     {
         if (strcmp(m_books[i]->ISBN(), ISBN) == 0)
         {
@@ -43,8 +43,8 @@ void Library::removeBook(const char *ISBN)
             m_numOfBooks--;
             return;
         }
-    }
-    /*for (size_t i = 0; i < m_numOfBooks; ++i)
+    }*/
+    for (size_t i = 0; i < m_numOfBooks; ++i)
     {
         if (strcmp(m_books[i]->ISBN(), ISBN) == 0)
         {
@@ -55,7 +55,7 @@ void Library::removeBook(const char *ISBN)
             m_numOfBooks--;
             return;
         }
-    }*/
+    }
 }
 
 void Library::clear()
@@ -64,6 +64,7 @@ void Library::clear()
     {
         m_books[i] = nullptr;
     }
+    delete[] m_books;
     m_numOfBooks = 0;
 }
 

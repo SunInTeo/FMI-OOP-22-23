@@ -1,28 +1,17 @@
 #pragma once
 #include "Book.hpp"
 
-/*
-Да НЯМА конструктор по подразбиране
-Да има коннструктор с параметри - Library(std::size_t capacity)
-
-Да спазва Rule of 0/3
-*/
 class Library
 {
 private:
-    Book *m_books;
-    size_t m_size;
+    Book **m_books;
+    size_t m_sizeTaken;
     size_t m_capacity;
-
-    void copy(const Library &other);
-    void erase();
-    void resize();
+    size_t m_numOfBooks;
 
 public:
     Library() = delete;
-    Library(const Library &other);
     Library(size_t capacity);
-    Library &operator=(const Library &other);
     ~Library();
 
     bool addNewBook(Book &book);                     // - добавя нова книга към библиотеката;

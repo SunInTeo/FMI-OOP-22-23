@@ -8,7 +8,7 @@ void Book::copy(const Book &other)
     this->m_space = other.m_space;
 }
 
-Book::Book(const char *ISBN = nullptr, const char *title = nullptr, const char *author = nullptr, std::size_t space)
+Book::Book(const char *ISBN, const char *title, const char *author, std::size_t space)
     : m_ISBN(ISBN), m_title(title), m_author(author), m_space(space)
 {
 }

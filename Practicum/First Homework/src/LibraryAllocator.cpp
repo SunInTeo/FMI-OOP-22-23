@@ -1,5 +1,17 @@
 #include "LibraryAllocator.hpp"
 
+std::size_t LibraryAllocator::getIndexOf(const Book &book)
+{
+    for (int i = 0; i < booksCount; i++)
+    {
+        if (m_books[i] == &book)
+        {
+            return i;
+        }
+    }
+    return -1;
+}
+
 LibraryAllocator::~LibraryAllocator()
 {
     cleanAll();
@@ -83,16 +95,4 @@ std::size_t LibraryAllocator::allBooksCount()
 std::size_t LibraryAllocator::booksInLibraryCount()
 {
     return lib->size();
-}
-
-std::size_t LibraryAllocator::getIndexOf(const Book &book)
-{
-    for (int i = 0; i < booksCount; i++)
-    {
-        if (m_books[i] == &book)
-        {
-            return i;
-        }
-    }
-    return -1;
 }

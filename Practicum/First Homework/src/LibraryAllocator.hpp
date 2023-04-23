@@ -9,7 +9,7 @@ private:
     Book **m_books;
     int booksCount;
 
-    std::size_t getIndexOf(Book &book);
+    std::size_t getIndexOf(const Book &book);
 
 public:
     LibraryAllocator() = delete;
@@ -32,5 +32,4 @@ public:
 
     std::size_t allBooksCount();
     std::size_t booksInLibraryCount();
-    std::size_t getIndexOf(const Book &book);
 };

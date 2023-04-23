@@ -19,9 +19,9 @@ MyString::MyString()
 MyString::MyString(const char *string)
 {
     length = strlen(string);
-    bufferSize = length + 1; 
+    bufferSize = length + 1;
     this->string = new char[bufferSize];
-    strcpy(this->string, string); 
+    strcpy(this->string, string);
 }
 
 MyString::MyString(const MyString &other)

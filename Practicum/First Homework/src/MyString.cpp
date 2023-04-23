@@ -98,12 +98,11 @@ std::size_t MyString::capacity() const
 
 void MyString::clear()
 {
-    if (string)
-    {
-        delete[] string;
-    }
+    delete[] string;
+    string = new char[1];
+    string[0] = '\0';
     length = 0;
-    bufferSize = 0;
+    bufferSize = 1;
 }
 
 void MyString::pop_back()
